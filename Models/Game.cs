@@ -13,6 +13,7 @@ namespace YourGameOfTheYear.Models
         public List<Genre> Genre { get; set; }
         public string Studio { get; set; }
         public double GameRating { get; set; }
+        public DateTime GameReleaseDate { get; set; }
         public List<Consoles> ConsoleList;
         public enum ESRBRating{ EVERYONE, EVERYONE10PLUS, TEEN, MATURE, ADULTS, RATINGPENDING }
     }

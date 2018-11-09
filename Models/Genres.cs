@@ -8,5 +8,6 @@ namespace YourGameOfTheYear.Models
         [Key]
         public int ID { get; set; }
         public string GenreName { get; set; }
+        public string GenreDescription { get; set; }
     }
 }
