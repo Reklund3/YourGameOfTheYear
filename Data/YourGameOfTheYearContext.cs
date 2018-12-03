@@ -14,10 +14,25 @@ namespace YourGameOfTheYear.Data
         {
 
         }
-        public YourGameOfTheYearContext()
-        {
-            
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {   //////////////////////////
+            // Consoles
+            modelBuilder.Entity<Consoles>().HasKey(x => x.ID).ForSqlServerIsClustered();
+
+            // Game
+            modelBuilder.Entity<Game>().HasKey(x => x.ID).ForSqlServerIsClustered();
+
+            // GameReview
+            modelBuilder.Entity<GameReview>().HasKey(x => x.ID).ForSqlServerIsClustered();
+
+            // Genre
+            modelBuilder.Entity<Genre>().HasKey(x => x.ID).ForSqlServerIsClustered();
+
+            // UserReview
+            modelBuilder.Entity<UserReview>().HasKey(x => x.ID).ForSqlServerIsClustered();
         }
+
         public DbSet<Consoles> Consoles { get; set; }
         public DbSet<Game> Game { get; set; }
         public DbSet<Genre> Genre { get; set; }

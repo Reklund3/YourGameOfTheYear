@@ -65,7 +65,7 @@ namespace YourGameOfTheYear
             using (var serviceScope = scopeFactory.CreateScope())
             using (var context = serviceScope.ServiceProvider.GetService<YourGameOfTheYearContext>())
             {
-                context.Database.Migrate();
+                context.Database.EnsureCreated();
             }
         }
     }
