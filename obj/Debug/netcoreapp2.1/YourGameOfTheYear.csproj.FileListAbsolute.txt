@@ -62,3 +62,35 @@ C:\Users\Mason Cahoon\ACA projects\Dotnet\YourGameOfTheYear\obj\Debug\netcoreapp
 C:\Users\Mason Cahoon\ACA projects\Dotnet\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.dll
 C:\Users\Mason Cahoon\ACA projects\Dotnet\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.pdb
 C:\Users\Mason Cahoon\ACA projects\Dotnet\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.csproj.CopyComplete
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\bin\Debug\netcoreapp2.1\YourGameOfTheYear.deps.json
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\bin\Debug\netcoreapp2.1\YourGameOfTheYear.runtimeconfig.json
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\bin\Debug\netcoreapp2.1\YourGameOfTheYear.runtimeconfig.dev.json
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\bin\Debug\netcoreapp2.1\YourGameOfTheYear.dll
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\bin\Debug\netcoreapp2.1\YourGameOfTheYear.pdb
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\bin\Debug\netcoreapp2.1\YourGameOfTheYear.Views.dll
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\bin\Debug\netcoreapp2.1\YourGameOfTheYear.Views.pdb
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.csprojAssemblyReference.cache
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.csproj.CoreCompileInputs.cache
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.RazorAssemblyInfo.cache
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.RazorAssemblyInfo.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.AssemblyInfoInputs.cache
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.AssemblyInfo.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.TagHelpers.input.cache
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.TagHelpers.output.cache
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.RazorCoreGenerate.cache
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.g.cshtml.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.RazorTargetAssemblyInfo.cache
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.RazorTargetAssemblyInfo.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.Views.pdb
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.dll
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.pdb
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.csproj.CopyComplete

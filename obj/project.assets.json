@@ -11500,23 +11500,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Mason Cahoon\\.nuget\\packages\\": {},
+    "C:\\Users\\rober\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mason Cahoon\\ACA projects\\Dotnet\\YourGameOfTheYear\\YourGameOfTheYear.csproj",
+      "projectUniqueName": "C:\\Users\\rober\\Desktop\\ACA Class work Books\\YourGameOfTheYear\\YourGameOfTheYear.csproj",
       "projectName": "YourGameOfTheYear",
-      "projectPath": "C:\\Users\\Mason Cahoon\\ACA projects\\Dotnet\\YourGameOfTheYear\\YourGameOfTheYear.csproj",
-      "packagesPath": "C:\\Users\\Mason Cahoon\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mason Cahoon\\ACA projects\\Dotnet\\YourGameOfTheYear\\obj\\",
+      "projectPath": "C:\\Users\\rober\\Desktop\\ACA Class work Books\\YourGameOfTheYear\\YourGameOfTheYear.csproj",
+      "packagesPath": "C:\\Users\\rober\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rober\\Desktop\\ACA Class work Books\\YourGameOfTheYear\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Mason Cahoon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\rober\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
