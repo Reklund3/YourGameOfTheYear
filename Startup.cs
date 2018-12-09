@@ -29,8 +29,8 @@ namespace YourGameOfTheYear
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddDbContext<YourGameOfTheYearContext>(db => db.UseSqlServer(Configuration.GetConnectionString("GameCon")));
-            //services.AddDbContext<YourGameOfTheYearContext>(db => db.UseInMemoryDatabase("GameTemp"));
+            //services.AddDbContext<YourGameOfTheYearContext>(db => db.UseSqlServer(Configuration.GetConnectionString("GameCon")));
+            services.AddDbContext<YourGameOfTheYearContext>(db => db.UseInMemoryDatabase("GameTemp"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
