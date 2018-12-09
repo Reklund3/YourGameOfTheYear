@@ -94,3 +94,13 @@ C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcorea
 C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.dll
 C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.pdb
 C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\YourGameOfTheYear.csproj.CopyComplete
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Games\Create.g.cshtml.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Games\Delete.g.cshtml.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Games\Details.g.cshtml.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Games\Edit.g.cshtml.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Games\Index.g.cshtml.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Consoles\Create.g.cshtml.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Consoles\Delete.g.cshtml.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Consoles\Details.g.cshtml.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Consoles\Edit.g.cshtml.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Consoles\Index.g.cshtml.cs

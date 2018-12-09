@@ -1,0 +1,36 @@
+﻿@model YourGameOfTheYear.Models.Consoles
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Consoles</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ConsolesName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ConsolesName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ConsoleCompany)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ConsoleCompany)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ConsoleReleaseDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ConsoleReleaseDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

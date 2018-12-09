@@ -8,8 +8,10 @@ namespace YourGameOfTheYear.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; private set; }
+        public int ID { get; set; }
         public string ConsolesName { get; set; }
         public string ConsoleCompany { get; set; }
+        [DisplayFormat(DataFormatString ="{0:d}")]
+        public DateTime ConsoleReleaseDate { get; set; }
     }
 }

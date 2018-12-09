@@ -1,0 +1,43 @@
+﻿@model YourGameOfTheYear.Models.Consoles
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Consoles</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ConsolesName" class="control-label"></label>
+                <input asp-for="ConsolesName" class="form-control" />
+                <span asp-validation-for="ConsolesName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConsoleCompany" class="control-label"></label>
+                <input asp-for="ConsoleCompany" class="form-control" />
+                <span asp-validation-for="ConsoleCompany" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConsoleReleaseDate" class="control-label"></label>
+                <input asp-for="ConsoleReleaseDate" class="form-control" />
+                <span asp-validation-for="ConsoleReleaseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
