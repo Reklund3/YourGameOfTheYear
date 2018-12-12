@@ -10,11 +10,16 @@ namespace YourGameOfTheYear.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
+        [Display(Name ="Title")]
         public string GamgName { get; set; }
+        [Display(Name = "Description")]
         public string GameDescription { get; set; }
         public List<Genre> Genre { get; set; }
+        [Display(Name = "Game Studio")]
         public string Studio { get; set; }
+        [Display(Name = "Rating")]
         public double GameRating { get; set; }
+        [Display(Name = "Release Date")]
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime GameReleaseDate { get; set; }
         public Message Message { get; set; }

@@ -9,7 +9,9 @@ namespace YourGameOfTheYear.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
+        [Display(Name = "Genre")]
         public string GenreName { get; set; }
+        [Display(Name = "Genre Description")]
         public string GenreDescription { get; set; }
     }
 }

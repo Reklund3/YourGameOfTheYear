@@ -14,6 +14,6 @@ namespace YourGameOfTheYear.Models
         public Game Game { get; set; } 
         public int UserReviewId { get; set; } 
         List<UserReview> UserReviews { get; set; }
-        public int Stars { get; set; }
+        public double Stars { get; set; }
     }
 }
