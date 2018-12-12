@@ -3,10 +3,12 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using YourGameOfTheYear.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace YourGameOfTheYear.Data
 {
-    public class YourGameOfTheYearContext : DbContext, IYourGameOfTheYearContext
+    public class YourGameOfTheYearContext : IdentityDbContext<IdentityUser, IdentityRole, string>, IYourGameOfTheYearContext
     {
         
 
@@ -17,9 +19,10 @@ namespace YourGameOfTheYear.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {   //////////////////////////
+            base.OnModelCreating(modelBuilder);
             // Consoles
             modelBuilder.Entity<Consoles>().HasKey(x => x.ID).ForSqlServerIsClustered();
-
+            
             // Game
             modelBuilder.Entity<Game>().HasKey(x => x.ID).ForSqlServerIsClustered();
 

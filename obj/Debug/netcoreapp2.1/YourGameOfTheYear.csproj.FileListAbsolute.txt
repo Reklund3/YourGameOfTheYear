@@ -104,3 +104,4 @@ C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcorea
 C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Consoles\Details.g.cshtml.cs
 C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Consoles\Edit.g.cshtml.cs
 C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Consoles\Index.g.cshtml.cs
+C:\Users\rober\Desktop\ACA Class work Books\YourGameOfTheYear\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LoginPartial.g.cshtml.cs

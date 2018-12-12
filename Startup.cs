@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -29,8 +30,11 @@ namespace YourGameOfTheYear
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            //services.AddDbContext<YourGameOfTheYearContext>(db => db.UseSqlServer(Configuration.GetConnectionString("GameCon")));
-            services.AddDbContext<YourGameOfTheYearContext>(db => db.UseInMemoryDatabase("GameTemp"));
+            services.AddDbContext<YourGameOfTheYearContext>(db => db.UseSqlServer(Configuration.GetConnectionString("GameCon")));
+            services.AddAuthentication().AddCookie();
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddEntityFrameworkStores<YourGameOfTheYearContext>();
+            //services.AddDbContext<YourGameOfTheYearContext>(db => db.UseInMemoryDatabase("GameTemp"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -50,13 +54,14 @@ namespace YourGameOfTheYear
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            
             EnsureDatabaseUpdated(app);
         }
         private void EnsureDatabaseUpdated(IApplicationBuilder app)
