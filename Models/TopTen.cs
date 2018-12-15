@@ -17,7 +17,25 @@ namespace YourGameOfTheYear.Models
         }
         private List<Game> GetTopTen()
         {
-            //TopTenGames.
+            foreach (Game g in _context.Game)
+            {
+                if(g.GameRating != 0)
+                {
+                    if (TopTenGames[0] == null)
+                    {
+                        TopTenGames.Add(g);
+                    }
+                    else if (TopTenGames[0].GameRating < g.GameRating)
+                    {
+                        TopTenGames.Insert(0, g);
+                    }
+                    else
+                    {
+                        TopTenGames.Add(g);
+                    }
+                }
+            }
+            TopTenGames.Take(10);
             return TopTenGames;
         }
     }

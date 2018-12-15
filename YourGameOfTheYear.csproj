@@ -13,7 +13,6 @@
   <ItemGroup>
     <Folder Include="Components\" />
     <Folder Include="Views\Shared\Components\TopTrending\" />
-    <Folder Include="Views\Shared\Components\TopTen\" />
   </ItemGroup>
 
 </Project>
