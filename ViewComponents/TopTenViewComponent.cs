@@ -3,15 +3,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using YourGameOfTheYear.Data;
 using YourGameOfTheYear.Models;
 
 namespace YourGameOfTheYear.ViewComponents
 {
     public class TopTenViewComponent : ViewComponent
     {
-        public IViewComponentResult Invoke(TopTen model)
+        private readonly YourGameOfTheYearContext _context;
+        public TopTenViewComponent(YourGameOfTheYearContext context)
         {
-            return View(model);
+            this._context = context;
+        }
+        public IViewComponentResult Invoke()
+        {            
+            return View(_context.Game.OrderByDescending(x => x.GameRating).Take(10).Select(game => new TopTen { GameName = game.GamgName, Rating = game.GameRating }));
         }
     }
 }

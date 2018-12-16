@@ -1,15 +1,22 @@
-﻿@model TopTen
-@{
-    Layout = null;
-}
+﻿@model IEnumerable<TopTen>
 
-<!DOCTYPE html>
+<div class="col-md-3">
+    <table class="table table-condensed">
+        <tr>
+            <th>Game</th>
+            <th>Rating</th>
+        </tr>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Default</title>
-</head>
-<body>
-</body>
-</html>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.GameName
+                </td>
+                <td>
+                    @item.Rating
+                </td>
+            </tr>
+        }
+    </table>
+</div>
