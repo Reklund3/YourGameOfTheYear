@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace YourGameOfTheYear.Data
 {
-    public class YourGameOfTheYearContext : IdentityDbContext<IdentityUser, IdentityRole, string>, IYourGameOfTheYearContext
+    public class YourGameOfTheYearContext : DbContext ,IYourGameOfTheYearContext
     {
         
 
@@ -19,7 +19,7 @@ namespace YourGameOfTheYear.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {   //////////////////////////
-            base.OnModelCreating(modelBuilder);
+            //base.OnModelCreating(modelBuilder);
             // Consoles
             modelBuilder.Entity<Consoles>().HasKey(x => x.ID).ForSqlServerIsClustered();
             

@@ -1,0 +1,22 @@
+﻿@model IEnumerable<TopTen>
+
+<div class="col-md-3">
+    <table class="table table-condensed">
+        <tr>
+            <th>Game</th>
+            <th>Rating</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.GameName
+                </td>
+                <td>
+                    @item.Rating
+                </td>
+            </tr>
+        }
+    </table>
+</div>
