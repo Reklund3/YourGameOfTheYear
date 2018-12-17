@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using YourGameOfTheYear.Data;
+using YourGameOfTheYear.Models;
 using YourGameOfTheYear.Services;
 
 namespace YourGameOfTheYear
@@ -31,9 +32,13 @@ namespace YourGameOfTheYear
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.AddDbContext<YourGameOfTheYearContext>(db => db.UseSqlServer(Configuration.GetConnectionString("GameCon")));
-            //services.AddAuthentication().AddCookie();
-            //services.AddDefaultIdentity<IdentityUser>()
-            //    .AddEntityFrameworkStores<YourGameOfTheYearContext>();
+            services.AddAuthentication().AddCookie();
+            services.AddIdentity<UserInfo, IdentityRole<int>>()
+                
+                .AddEntityFrameworkStores<YourGameOfTheYearContext>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders()
+                .AddRoleManager<RoleManager<IdentityRole<int>>>();
             //services.AddDbContext<YourGameOfTheYearContext>(db => db.UseInMemoryDatabase("GameTemp"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
