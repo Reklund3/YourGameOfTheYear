@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <Folder Include="Components\" />
-    <Folder Include="Views\Shared\Components\TopTrending\" />
   </ItemGroup>
 
 </Project>
