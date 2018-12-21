@@ -10,6 +10,7 @@ namespace YourGameOfTheYear.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
+        [Display(Name = "Rating")]
         public double UserRating { get; set; }
         public string UserReviewTitle { get; set; }
         public string UserDescription { get; set; }

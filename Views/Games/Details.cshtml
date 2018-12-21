@@ -32,6 +32,30 @@
         </dd>
     </dl>
 
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" asp-controller="UserReviews">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ID" name="GameId" />
+                <div class="form-group">
+                    <label name="@nameof(UserReview.UserReviewTitle)" class="control-label">Title</label>
+                    <input name="UserReviewTitle" class="form-control" />
+                    @Html.ValidationMessageFor(x => x.UserReviews[0].UserReviewTitle)
+
+                    <label name="@nameof(UserReview.UserDescription)" class="control-label">Review</label>
+                    <input name="UserDescription" class="form-control" />
+                    @Html.ValidationMessageFor(x => x.UserReviews[0].UserDescription)
+
+                    <label name="@nameof(UserReview.UserRating)" class="control-label">Rating</label>
+                    <input name="UserRating" class="form-control" />
+                    @Html.ValidationMessageFor(x => x.UserReviews[0].UserRating)
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 @await Component.InvokeAsync("Review")
 <div>

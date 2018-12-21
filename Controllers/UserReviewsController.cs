@@ -58,10 +58,10 @@ namespace YourGameOfTheYear.Controllers
         {
             if (ModelState.IsValid)
             {
-                userReview.GameId = 1;
+                userReview.ReviewDate = DateTime.UtcNow;
                 _context.Add(userReview);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Details), nameof(GamesController).Replace("Controller",""), new { ID = userReview.GameId } );
             }
             return View(userReview);
         }
