@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YourGameOfTheYear.Data;
 
 namespace YourGameOfTheYear.Migrations
 {
     [DbContext(typeof(YourGameOfTheYearContext))]
-    partial class YourGameOfTheYearContextModelSnapshot : ModelSnapshot
+    [Migration("20181221163644_add UserReview detail")]
+    partial class addUserReviewdetail
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

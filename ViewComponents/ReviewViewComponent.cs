@@ -8,16 +8,16 @@ using YourGameOfTheYear.Models;
 
 namespace YourGameOfTheYear.ViewComponents
 {
-    public class TopTenViewComponent : ViewComponent
+    public class ReviewViewComponent : ViewComponent
     {
         private readonly YourGameOfTheYearContext _context;
-        public TopTenViewComponent(YourGameOfTheYearContext context)
+        public ReviewViewComponent(YourGameOfTheYearContext context)
         {
             this._context = context;
         }
         public IViewComponentResult Invoke()
-        {            
-            return View(_context.Games.OrderByDescending(x => x.GameRating).Take(10).Select(game => new TopTen { GameName = game.GamgName, Rating = game.GameRating }));
+        {
+            return View(_context.UserReviews);
         }
     }
 }

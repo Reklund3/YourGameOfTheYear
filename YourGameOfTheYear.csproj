@@ -14,4 +14,10 @@
     <Folder Include="Components\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Shared\Components\Review\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>

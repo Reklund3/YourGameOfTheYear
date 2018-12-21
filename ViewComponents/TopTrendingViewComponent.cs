@@ -17,7 +17,7 @@ namespace YourGameOfTheYear.ViewComponents
         }
         public IViewComponentResult Invoke()
         {
-            return View(_context.Game.OrderByDescending(x => x.GameRating).Take(10).Select(game => new TopTen { GameName = game.GamgName, Rating = game.GameRating }));
+            return View(_context.Games.OrderByDescending(x => x.GameRating).Take(10).Select(game => new TopTen { GameName = game.GamgName, Rating = game.GameRating }));
         }
     }
 }

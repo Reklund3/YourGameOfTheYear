@@ -37,12 +37,14 @@ namespace YourGameOfTheYear.Data
         }
 
         public DbSet<Consoles> Consoles { get; set; }
-        public DbSet<Game> Game { get; set; }
+        public DbSet<Game> Games { get; set; }
         public DbSet<Genre> Genre { get; set; }
+        public DbSet<UserReview> UserReviews { get; set; }
         IQueryable<Consoles> IYourGameOfTheYearContext.Consoles { get => Consoles.AsNoTracking(); }
 
-        IQueryable<Game> IYourGameOfTheYearContext.Games { get => Game.AsNoTracking(); }
+        IQueryable<Game> IYourGameOfTheYearContext.Games { get => Games.AsNoTracking(); }
 
         IQueryable<Genre> IYourGameOfTheYearContext.Genres { get => Genre.AsNoTracking(); }
+        IQueryable<UserReview> IYourGameOfTheYearContext.UserReviews { get => UserReviews.AsNoTracking(); }
     }
 }

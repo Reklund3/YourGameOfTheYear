@@ -22,7 +22,7 @@ namespace YourGameOfTheYear.Models
         [Display(Name = "Release Date")]
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime GameReleaseDate { get; set; }
-        public Message Message { get; set; }
+        public List<UserReview> UserReviews { get; set; }
         public List<Consoles> ConsoleList;
         public enum ESRBRating{ EVERYONE, EVERYONE10PLUS, TEEN, MATURE, ADULTS, RATINGPENDING }
     }

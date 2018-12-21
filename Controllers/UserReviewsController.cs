@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,23 +10,22 @@ using YourGameOfTheYear.Models;
 
 namespace YourGameOfTheYear.Controllers
 {
-    [Authorize(Roles = "Admin")]
-    public class GamesController : Controller
+    public class UserReviewsController : Controller
     {
         private readonly YourGameOfTheYearContext _context;
 
-        public GamesController(YourGameOfTheYearContext context)
+        public UserReviewsController(YourGameOfTheYearContext context)
         {
             _context = context;
         }
-        [AllowAnonymous]
-        // GET: Games
+
+        // GET: UserReviews
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Games.ToListAsync());
+            return View(await _context.UserReviews.ToListAsync());
         }
 
-        // GET: Games/Details/5
+        // GET: UserReviews/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,39 +33,40 @@ namespace YourGameOfTheYear.Controllers
                 return NotFound();
             }
 
-            var game = await _context.Games
+            var userReview = await _context.UserReviews
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (game == null)
+            if (userReview == null)
             {
                 return NotFound();
             }
 
-            return View(game);
+            return View(userReview);
         }
 
-        // GET: Games/Create
+        // GET: UserReviews/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Games/Create
+        // POST: UserReviews/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,GamgName,GameDescription,Studio,GameRating,GameReleaseDate")] Game game)
+        public async Task<IActionResult> Create([Bind("ID,UserRating,UserReviewTitle,UserDescription,ReviewDate,GameId")] UserReview userReview)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(game);
+                userReview.GameId = 1;
+                _context.Add(userReview);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(game);
+            return View(userReview);
         }
 
-        // GET: Games/Edit/5
+        // GET: UserReviews/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +74,22 @@ namespace YourGameOfTheYear.Controllers
                 return NotFound();
             }
 
-            var game = await _context.Games.FindAsync(id);
-            if (game == null)
+            var userReview = await _context.UserReviews.FindAsync(id);
+            if (userReview == null)
             {
                 return NotFound();
             }
-            return View(game);
+            return View(userReview);
         }
 
-        // POST: Games/Edit/5
+        // POST: UserReviews/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,GamgName,GameDescription,Studio,GameRating,GameReleaseDate")] Game game)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,UserRating,UserReviewTitle,UserDescription,ReviewDate,GameId")] UserReview userReview)
         {
-            if (id != game.ID)
+            if (id != userReview.ID)
             {
                 return NotFound();
             }
@@ -99,13 +98,12 @@ namespace YourGameOfTheYear.Controllers
             {
                 try
                 {
-                    
-                    _context.Update(game);
+                    _context.Update(userReview);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GameExists(game.ID))
+                    if (!UserReviewExists(userReview.ID))
                     {
                         return NotFound();
                     }
@@ -116,10 +114,10 @@ namespace YourGameOfTheYear.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(game);
+            return View(userReview);
         }
 
-        // GET: Games/Delete/5
+        // GET: UserReviews/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -127,30 +125,30 @@ namespace YourGameOfTheYear.Controllers
                 return NotFound();
             }
 
-            var game = await _context.Games
+            var userReview = await _context.UserReviews
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (game == null)
+            if (userReview == null)
             {
                 return NotFound();
             }
 
-            return View(game);
+            return View(userReview);
         }
 
-        // POST: Games/Delete/5
+        // POST: UserReviews/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var game = await _context.Games.FindAsync(id);
-            _context.Games.Remove(game);
+            var userReview = await _context.UserReviews.FindAsync(id);
+            _context.UserReviews.Remove(userReview);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool GameExists(int id)
+        private bool UserReviewExists(int id)
         {
-            return _context.Games.Any(e => e.ID == id);
+            return _context.UserReviews.Any(e => e.ID == id);
         }
     }
 }

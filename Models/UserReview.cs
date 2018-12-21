@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,5 +14,7 @@ namespace YourGameOfTheYear.Models
         public string UserReviewTitle { get; set; }
         public string UserDescription { get; set; }
         public DateTime ReviewDate { get; set; }
+        public List<Message> Messages { get; set; }
+        public int GameId { get; set; }
     }
 }
