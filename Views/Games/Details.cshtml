@@ -33,32 +33,34 @@
     </dl>
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-12">
             <form asp-action="Create" asp-controller="UserReviews">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="ID" name="GameId" />
-                <div class="form-group">
-                    <label name="@nameof(UserReview.UserReviewTitle)" class="control-label">Title</label>
-                    <input name="UserReviewTitle" class="form-control" />
-                    @Html.ValidationMessageFor(x => x.UserReviews[0].UserReviewTitle)
-
-                    <label name="@nameof(UserReview.UserDescription)" class="control-label">Review</label>
-                    <input name="UserDescription" class="form-control" />
-                    @Html.ValidationMessageFor(x => x.UserReviews[0].UserDescription)
-
-                    <label name="@nameof(UserReview.UserRating)" class="control-label">Rating</label>
-                    <input name="UserRating" class="form-control" />
-                    @Html.ValidationMessageFor(x => x.UserReviews[0].UserRating)
+                <div class="form-group row">
+                    <div class="col-md-5">
+                        <label name="@nameof(UserReview.UserReviewTitle)" class="control-label">Title</label>
+                        <input name="UserReviewTitle" class="form-control" />
+                        @Html.ValidationMessageFor(x => x.UserReviews[0].UserReviewTitle)
+                    </div>
+                    <div class="col-md-5 col-md-offset-2">
+                        <label name="@nameof(UserReview.UserRating)" class="control-label">Rating</label>
+                        <input name="UserRating" class="form-control" />
+                        @Html.ValidationMessageFor(x => x.UserReviews[0].UserRating)
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                <div class="row">
+                    <div class="col-md-10">
+                        <label name="@nameof(UserReview.UserDescription)" class="control-label">Review</label>
+                        <textarea rows="3" cols="25" name="UserDescription" class="form-control"></textarea>
+                        @Html.ValidationMessageFor(x => x.UserReviews[0].UserDescription)
+                    </div>
+                    <div class="form-group col-md-2 text-center">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
-@await Component.InvokeAsync("Review")
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+@await Component.InvokeAsync("Review",Model.ID)

@@ -15,9 +15,9 @@ namespace YourGameOfTheYear.ViewComponents
         {
             this._context = context;
         }
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(int id)
         {
-            return View(_context.UserReviews);
+            return View(_context.UserReviews.Where(x => x.GameId == id));
         }
     }
 }

@@ -56,10 +56,18 @@ namespace YourGameOfTheYear.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,UserRating,UserReviewTitle,UserDescription,ReviewDate,GameId")] UserReview userReview)
         {
+
             if (ModelState.IsValid)
             {
                 userReview.ReviewDate = DateTime.UtcNow;
                 _context.Add(userReview);
+                await _context.SaveChangesAsync();
+                Game game = _context.Games.FirstOrDefault(x => x.ID == userReview.GameId);
+                double newAvg = _context.UserReviews
+                                .Where(x => x.GameId == userReview.GameId)
+                                .Select(x => x.UserRating).Average();
+                game.GameRating = Math.Round(newAvg, 1);
+                _context.Update(game);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Details), nameof(GamesController).Replace("Controller",""), new { ID = userReview.GameId } );
             }
