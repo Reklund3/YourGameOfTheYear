@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using YourGameOfTheYear.Data;
 using YourGameOfTheYear.Models;
 using YourGameOfTheYear.Services;
+using YourGameOfTheYear.ViewComponents;
 
 namespace YourGameOfTheYear
 {
@@ -34,7 +35,6 @@ namespace YourGameOfTheYear
             services.AddDbContext<YourGameOfTheYearContext>(db => db.UseSqlServer(Configuration.GetConnectionString("GameCon")));
             services.AddAuthentication().AddCookie();
             services.AddIdentity<UserInfo, IdentityRole<int>>()
-                
                 .AddEntityFrameworkStores<YourGameOfTheYearContext>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders()

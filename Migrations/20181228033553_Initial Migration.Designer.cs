@@ -10,8 +10,8 @@ using YourGameOfTheYear.Data;
 namespace YourGameOfTheYear.Migrations
 {
     [DbContext(typeof(YourGameOfTheYearContext))]
-    [Migration("20181216215744_Initial Migrations")]
-    partial class InitialMigrations
+    [Migration("20181228033553_Initial Migration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -86,11 +86,9 @@ namespace YourGameOfTheYear.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128);
+                    b.Property<string>("LoginProvider");
 
-                    b.Property<string>("ProviderKey")
-                        .HasMaxLength(128);
+                    b.Property<string>("ProviderKey");
 
                     b.Property<string>("ProviderDisplayName");
 
@@ -120,11 +118,9 @@ namespace YourGameOfTheYear.Migrations
                 {
                     b.Property<int>("UserId");
 
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128);
+                    b.Property<string>("LoginProvider");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(128);
+                    b.Property<string>("Name");
 
                     b.Property<string>("Value");
 
@@ -159,42 +155,20 @@ namespace YourGameOfTheYear.Migrations
 
                     b.Property<string>("GameDescription");
 
+                    b.Property<string>("GameName");
+
                     b.Property<double>("GameRating");
 
                     b.Property<DateTime>("GameReleaseDate");
 
-                    b.Property<string>("GamgName");
-
-                    b.Property<int?>("MessageID");
-
                     b.Property<string>("Studio");
 
-                    b.HasKey("ID")
-                        .HasAnnotation("SqlServer:Clustered", true);
-
-                    b.HasIndex("MessageID");
-
-                    b.ToTable("Game");
-                });
-
-            modelBuilder.Entity("YourGameOfTheYear.Models.GameReview", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("GameId");
-
-                    b.Property<double>("Stars");
-
-                    b.Property<int>("UserReviewId");
+                    b.Property<int>("UserActivity");
 
                     b.HasKey("ID")
                         .HasAnnotation("SqlServer:Clustered", true);
 
-                    b.HasIndex("GameId");
-
-                    b.ToTable("GameReview");
+                    b.ToTable("Games");
                 });
 
             modelBuilder.Entity("YourGameOfTheYear.Models.Genre", b =>
@@ -225,7 +199,15 @@ namespace YourGameOfTheYear.Migrations
 
                     b.Property<string>("Body");
 
+                    b.Property<DateTime>("MessageDate");
+
+                    b.Property<int>("UserId");
+
+                    b.Property<int?>("UserReviewID");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("UserReviewID");
 
                     b.ToTable("Message");
                 });
@@ -238,7 +220,7 @@ namespace YourGameOfTheYear.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
-                    b.Property<int>("Comments");
+                    b.Property<int>("CommentsCount");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
@@ -272,8 +254,6 @@ namespace YourGameOfTheYear.Migrations
 
                     b.Property<bool>("TwoFactorEnabled");
 
-                    b.Property<int>("UserFK");
-
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
 
@@ -296,6 +276,8 @@ namespace YourGameOfTheYear.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("GameId");
+
                     b.Property<DateTime>("ReviewDate");
 
                     b.Property<string>("UserDescription");
@@ -307,7 +289,9 @@ namespace YourGameOfTheYear.Migrations
                     b.HasKey("ID")
                         .HasAnnotation("SqlServer:Clustered", true);
 
-                    b.ToTable("UserReview");
+                    b.HasIndex("GameId");
+
+                    b.ToTable("UserReviews");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -355,26 +339,26 @@ namespace YourGameOfTheYear.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("YourGameOfTheYear.Models.Game", b =>
-                {
-                    b.HasOne("YourGameOfTheYear.Models.Message", "Message")
-                        .WithMany()
-                        .HasForeignKey("MessageID");
-                });
-
-            modelBuilder.Entity("YourGameOfTheYear.Models.GameReview", b =>
-                {
-                    b.HasOne("YourGameOfTheYear.Models.Game", "Game")
-                        .WithMany()
-                        .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("YourGameOfTheYear.Models.Genre", b =>
                 {
                     b.HasOne("YourGameOfTheYear.Models.Game")
                         .WithMany("Genre")
                         .HasForeignKey("GameID");
+                });
+
+            modelBuilder.Entity("YourGameOfTheYear.Models.Message", b =>
+                {
+                    b.HasOne("YourGameOfTheYear.Models.UserReview")
+                        .WithMany("Messages")
+                        .HasForeignKey("UserReviewID");
+                });
+
+            modelBuilder.Entity("YourGameOfTheYear.Models.UserReview", b =>
+                {
+                    b.HasOne("YourGameOfTheYear.Models.Game")
+                        .WithMany("UserReviews")
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

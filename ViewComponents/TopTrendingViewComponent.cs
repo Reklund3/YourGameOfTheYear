@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using YourGameOfTheYear.Data;
 using YourGameOfTheYear.Models;
+using YourGameOfTheYear.Services;
 
 namespace YourGameOfTheYear.ViewComponents
 {
@@ -17,7 +18,8 @@ namespace YourGameOfTheYear.ViewComponents
         }
         public IViewComponentResult Invoke()
         {
-            return View(_context.Games.OrderByDescending(x => x.GameRating).Take(10).Select(game => new TopTen { GameName = game.GamgName, Rating = game.GameRating }));
+            _context.UpdateTrending();
+            return View(_context.Games.OrderByDescending(x => x.UserActivity).Take(10));
         }
     }
 }

@@ -56,7 +56,7 @@ namespace YourGameOfTheYear.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,GamgName,GameDescription,Studio,GameRating,GameReleaseDate")] Game game)
+        public async Task<IActionResult> Create([Bind("ID,GameName,GameDescription,Studio,GameRating,GameReleaseDate")] Game game)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace YourGameOfTheYear.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,GamgName,GameDescription,Studio,GameRating,GameReleaseDate")] Game game)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,GameName,GameDescription,Studio,GameRating,GameReleaseDate")] Game game)
         {
             if (id != game.ID)
             {

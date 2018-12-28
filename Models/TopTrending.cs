@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using YourGameOfTheYear.Data;
 
 namespace YourGameOfTheYear.Models
 {
-    public class TopTen
+    public class TopTrending
     {
         public string GameName;
-        public double Rating;
+        public int Activity;
     }
 }

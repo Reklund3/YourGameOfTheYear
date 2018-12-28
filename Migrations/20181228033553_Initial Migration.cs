@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace YourGameOfTheYear.Migrations
 {
-    public partial class InitialMigrations : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,9 +44,8 @@ namespace YourGameOfTheYear.Migrations
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     NickName = table.Column<string>(nullable: true),
-                    UserFK = table.Column<int>(nullable: false),
                     SubmittedReviewCount = table.Column<int>(nullable: false),
-                    Comments = table.Column<int>(nullable: false)
+                    CommentsCount = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,32 +69,21 @@ namespace YourGameOfTheYear.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Message",
+                name: "Games",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Body = table.Column<string>(nullable: true)
+                    GameName = table.Column<string>(nullable: true),
+                    GameDescription = table.Column<string>(nullable: true),
+                    Studio = table.Column<string>(nullable: true),
+                    UserActivity = table.Column<int>(nullable: false),
+                    GameRating = table.Column<double>(nullable: false),
+                    GameReleaseDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Message", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserReview",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserRating = table.Column<double>(nullable: false),
-                    UserReviewTitle = table.Column<string>(nullable: true),
-                    UserDescription = table.Column<string>(nullable: true),
-                    ReviewDate = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserReview", x => x.ID)
+                    table.PrimaryKey("PK_Games", x => x.ID)
                         .Annotation("SqlServer:Clustered", true);
                 });
 
@@ -145,8 +133,8 @@ namespace YourGameOfTheYear.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(nullable: false),
+                    ProviderKey = table.Column<string>(nullable: false),
                     ProviderDisplayName = table.Column<string>(nullable: true),
                     UserId = table.Column<int>(nullable: false)
                 },
@@ -190,8 +178,8 @@ namespace YourGameOfTheYear.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<int>(nullable: false),
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    Name = table.Column<string>(maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
                     Value = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -202,53 +190,6 @@ namespace YourGameOfTheYear.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Game",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    GamgName = table.Column<string>(nullable: true),
-                    GameDescription = table.Column<string>(nullable: true),
-                    Studio = table.Column<string>(nullable: true),
-                    GameRating = table.Column<double>(nullable: false),
-                    GameReleaseDate = table.Column<DateTime>(nullable: false),
-                    MessageID = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Game", x => x.ID)
-                        .Annotation("SqlServer:Clustered", true);
-                    table.ForeignKey(
-                        name: "FK_Game_Message_MessageID",
-                        column: x => x.MessageID,
-                        principalTable: "Message",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "GameReview",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    GameId = table.Column<int>(nullable: false),
-                    UserReviewId = table.Column<int>(nullable: false),
-                    Stars = table.Column<double>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_GameReview", x => x.ID)
-                        .Annotation("SqlServer:Clustered", true);
-                    table.ForeignKey(
-                        name: "FK_GameReview_Game_GameId",
-                        column: x => x.GameId,
-                        principalTable: "Game",
-                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -267,9 +208,55 @@ namespace YourGameOfTheYear.Migrations
                     table.PrimaryKey("PK_Genre", x => x.ID)
                         .Annotation("SqlServer:Clustered", true);
                     table.ForeignKey(
-                        name: "FK_Genre_Game_GameID",
+                        name: "FK_Genre_Games_GameID",
                         column: x => x.GameID,
-                        principalTable: "Game",
+                        principalTable: "Games",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserReviews",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    UserRating = table.Column<double>(nullable: false),
+                    UserReviewTitle = table.Column<string>(nullable: true),
+                    UserDescription = table.Column<string>(nullable: true),
+                    ReviewDate = table.Column<DateTime>(nullable: false),
+                    GameId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserReviews", x => x.ID)
+                        .Annotation("SqlServer:Clustered", true);
+                    table.ForeignKey(
+                        name: "FK_UserReviews_Games_GameId",
+                        column: x => x.GameId,
+                        principalTable: "Games",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Message",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Body = table.Column<string>(nullable: true),
+                    MessageDate = table.Column<DateTime>(nullable: false),
+                    UserId = table.Column<int>(nullable: false),
+                    UserReviewID = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Message", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Message_UserReviews_UserReviewID",
+                        column: x => x.UserReviewID,
+                        principalTable: "UserReviews",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -314,19 +301,19 @@ namespace YourGameOfTheYear.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Game_MessageID",
-                table: "Game",
-                column: "MessageID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_GameReview_GameId",
-                table: "GameReview",
-                column: "GameId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Genre_GameID",
                 table: "Genre",
                 column: "GameID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Message_UserReviewID",
+                table: "Message",
+                column: "UserReviewID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserReviews_GameId",
+                table: "UserReviews",
+                column: "GameId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -350,13 +337,10 @@ namespace YourGameOfTheYear.Migrations
                 name: "Consoles");
 
             migrationBuilder.DropTable(
-                name: "GameReview");
-
-            migrationBuilder.DropTable(
                 name: "Genre");
 
             migrationBuilder.DropTable(
-                name: "UserReview");
+                name: "Message");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -365,10 +349,10 @@ namespace YourGameOfTheYear.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Game");
+                name: "UserReviews");
 
             migrationBuilder.DropTable(
-                name: "Message");
+                name: "Games");
         }
     }
 }

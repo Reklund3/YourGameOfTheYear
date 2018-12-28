@@ -153,38 +153,20 @@ namespace YourGameOfTheYear.Migrations
 
                     b.Property<string>("GameDescription");
 
+                    b.Property<string>("GameName");
+
                     b.Property<double>("GameRating");
 
                     b.Property<DateTime>("GameReleaseDate");
 
-                    b.Property<string>("GamgName");
-
                     b.Property<string>("Studio");
+
+                    b.Property<int>("UserActivity");
 
                     b.HasKey("ID")
                         .HasAnnotation("SqlServer:Clustered", true);
 
                     b.ToTable("Games");
-                });
-
-            modelBuilder.Entity("YourGameOfTheYear.Models.GameReview", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("GameId");
-
-                    b.Property<double>("Stars");
-
-                    b.Property<int>("UserReviewId");
-
-                    b.HasKey("ID")
-                        .HasAnnotation("SqlServer:Clustered", true);
-
-                    b.HasIndex("GameId");
-
-                    b.ToTable("GameReview");
                 });
 
             modelBuilder.Entity("YourGameOfTheYear.Models.Genre", b =>
@@ -352,14 +334,6 @@ namespace YourGameOfTheYear.Migrations
                     b.HasOne("YourGameOfTheYear.Models.UserInfo")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("YourGameOfTheYear.Models.GameReview", b =>
-                {
-                    b.HasOne("YourGameOfTheYear.Models.Game", "Game")
-                        .WithMany()
-                        .HasForeignKey("GameId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

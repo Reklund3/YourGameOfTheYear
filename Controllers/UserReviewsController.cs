@@ -52,6 +52,12 @@ namespace YourGameOfTheYear.Controllers
         // POST: UserReviews/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // *********************************************************
+        // Intent is to create a user review for a game, this is used
+        // in a ViewComponent that takes in the game that the user is
+        // reviewing. Onve the review is save the games rating is 
+        // recalculated with the average of all user reviews.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,UserRating,UserReviewTitle,UserDescription,ReviewDate,GameId")] UserReview userReview)

@@ -11,12 +11,14 @@ namespace YourGameOfTheYear.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         [Display(Name ="Title")]
-        public string GamgName { get; set; }
+        public string GameName { get; set; }
         [Display(Name = "Description")]
         public string GameDescription { get; set; }
         public List<Genre> Genre { get; set; }
         [Display(Name = "Game Studio")]
         public string Studio { get; set; }
+        [Display(Name = "Activity")]
+        public int UserActivity { get; set; }
         [Display(Name = "Rating")]
         public double GameRating { get; set; }
         [Display(Name = "Release Date")]

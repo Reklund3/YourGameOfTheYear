@@ -1,10 +1,12 @@
-﻿@model IEnumerable<TopTen>
+﻿@model IEnumerable<Game>
+
 <div class="col-md-3 col-md-offset-2">
     <table class="table table-condensed">
         <tr>
             <th>Game</th>
-            <th>Rating</th>
+            <th>Activity</th>
         </tr>
+
         @foreach (var item in Model)
         {
             <tr>
@@ -12,7 +14,7 @@
                     @item.GameName
                 </td>
                 <td>
-                    @item.Rating
+                    @item.UserActivity
                 </td>
             </tr>
         }
