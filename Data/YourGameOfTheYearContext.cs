@@ -33,31 +33,17 @@ namespace YourGameOfTheYear.Data
             // UserReview
             modelBuilder.Entity<UserReview>().HasKey(x => x.ID).ForSqlServerIsClustered();
         }
-        public void UpdateTrending()
-        {
-            foreach (Game game in Games)
-            {
-                List<UserReview> userReviews = new List<UserReview>();
-                if (UserReviews.Where(x => x.GameId == game.ID).Count() == 0)
-                {
-                    game.UserActivity = 0;
-                }
-                else 
-                {
-                    game.UserReviews = UserReviews.Where(x => x.GameId == game.ID).ToList();
-                    game.UserActivity = game.UserReviews.Where(x => x.ReviewDate > DateTime.Now.AddDays(-1)).Count();
-                }
-                Console.WriteLine(game.UserActivity);
-
-            }
-        }
+        
         public DbSet<Consoles> Consoles { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<Genre> Genre { get; set; }
         public DbSet<UserReview> UserReviews { get; set; }
+        public DbSet<UserInfo> UsersInfo { get; set; }
         IQueryable<Consoles> IYourGameOfTheYearContext.Consoles { get => Consoles.AsNoTracking(); }
         IQueryable<Game> IYourGameOfTheYearContext.Games { get => Games.AsNoTracking(); }
         IQueryable<Genre> IYourGameOfTheYearContext.Genres { get => Genre.AsNoTracking(); }
         IQueryable<UserReview> IYourGameOfTheYearContext.UserReviews { get => UserReviews.AsNoTracking(); }
+        IQueryable<UserInfo> IYourGameOfTheYearContext.UsersInfo { get => UsersInfo.AsNoTracking(); }
+
     }
 }

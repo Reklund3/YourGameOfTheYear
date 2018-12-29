@@ -11,15 +11,15 @@ namespace YourGameOfTheYear.ViewComponents
 {
     public class TopTrendingViewComponent : ViewComponent
     {
-        private readonly YourGameOfTheYearContext _context;
-        public TopTrendingViewComponent(YourGameOfTheYearContext context)
+        private readonly IRepository _repository;
+        public TopTrendingViewComponent(IRepository repository)
         {
-            this._context = context;
+            this._repository = repository;
         }
         public IViewComponentResult Invoke()
         {
-            _context.UpdateTrending();
-            return View(_context.Games.OrderByDescending(x => x.UserActivity).Take(10));
+            _repository.UpdateTrending();
+            return View(_repository.Games.OrderByDescending(x => x.UserActivity).Take(10));
         }
     }
 }

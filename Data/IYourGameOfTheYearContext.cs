@@ -10,5 +10,6 @@ namespace YourGameOfTheYear.Data
         IQueryable<Game> Games { get; }
         IQueryable<Genre> Genres { get; }
         IQueryable<UserReview> UserReviews { get; }
+        IQueryable<UserInfo> UsersInfo { get; }
     }
 }

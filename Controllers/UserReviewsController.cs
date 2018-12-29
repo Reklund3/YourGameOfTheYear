@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using YourGameOfTheYear.Data;
 using YourGameOfTheYear.Models;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace YourGameOfTheYear.Controllers
 {
@@ -66,6 +68,8 @@ namespace YourGameOfTheYear.Controllers
             if (ModelState.IsValid)
             {
                 userReview.ReviewDate = DateTime.UtcNow;
+                var id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                //userReview.UserNickName = _context.UsersInfo.FirstOrDefault(x => x.Id == id).NickName;
                 _context.Add(userReview);
                 await _context.SaveChangesAsync();
                 Game game = _context.Games.FirstOrDefault(x => x.ID == userReview.GameId);
