@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,23 +10,22 @@ using YourGameOfTheYear.Models;
 
 namespace YourGameOfTheYear.Controllers
 {
-    [Authorize(Roles = "Admin")]
-    public class GamesController : Controller
+    public class GenresController : Controller
     {
         private readonly YourGameOfTheYearContext _context;
 
-        public GamesController(YourGameOfTheYearContext context)
+        public GenresController(YourGameOfTheYearContext context)
         {
             _context = context;
         }
-        [AllowAnonymous]
-        // GET: Games
+
+        // GET: Genres
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Games.Include(x => x.Genre).ToListAsync());
+            return View(await _context.Genre.ToListAsync());
         }
 
-        // GET: Games/Details/5
+        // GET: Genres/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,40 +33,39 @@ namespace YourGameOfTheYear.Controllers
                 return NotFound();
             }
 
-            var game = await _context.Games
+            var genre = await _context.Genre
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (game == null)
+            if (genre == null)
             {
                 return NotFound();
             }
 
-            return View(game);
+            return View(genre);
         }
 
-        // GET: Games/Create
+        // GET: Genres/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Games/Create
+        // POST: Genres/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,GameName,GameDescription,Studio,GameRating,GenreId,GameReleaseDate")] Game game)
+        public async Task<IActionResult> Create([Bind("ID,GenreName,GenreDescription")] Genre genre)
         {
             if (ModelState.IsValid)
             {
-                game.GameRating = 0;
-                _context.Add(game);
+                _context.Add(genre);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(game);
+            return View(genre);
         }
 
-        // GET: Games/Edit/5
+        // GET: Genres/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -76,22 +73,22 @@ namespace YourGameOfTheYear.Controllers
                 return NotFound();
             }
 
-            var game = await _context.Games.FindAsync(id);
-            if (game == null)
+            var genre = await _context.Genre.FindAsync(id);
+            if (genre == null)
             {
                 return NotFound();
             }
-            return View(game);
+            return View(genre);
         }
 
-        // POST: Games/Edit/5
+        // POST: Genres/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,GameName,GameDescription,Studio,GameRating,GameReleaseDate")] Game game)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,GenreName,GenreDescription")] Genre genre)
         {
-            if (id != game.ID)
+            if (id != genre.ID)
             {
                 return NotFound();
             }
@@ -100,13 +97,12 @@ namespace YourGameOfTheYear.Controllers
             {
                 try
                 {
-                    
-                    _context.Update(game);
+                    _context.Update(genre);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GameExists(game.ID))
+                    if (!GenreExists(genre.ID))
                     {
                         return NotFound();
                     }
@@ -117,10 +113,10 @@ namespace YourGameOfTheYear.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(game);
+            return View(genre);
         }
 
-        // GET: Games/Delete/5
+        // GET: Genres/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -128,30 +124,30 @@ namespace YourGameOfTheYear.Controllers
                 return NotFound();
             }
 
-            var game = await _context.Games
+            var genre = await _context.Genre
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (game == null)
+            if (genre == null)
             {
                 return NotFound();
             }
 
-            return View(game);
+            return View(genre);
         }
 
-        // POST: Games/Delete/5
+        // POST: Genres/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var game = await _context.Games.FindAsync(id);
-            _context.Games.Remove(game);
+            var genre = await _context.Genre.FindAsync(id);
+            _context.Genre.Remove(genre);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool GameExists(int id)
+        private bool GenreExists(int id)
         {
-            return _context.Games.Any(e => e.ID == id);
+            return _context.Genre.Any(e => e.ID == id);
         }
     }
 }

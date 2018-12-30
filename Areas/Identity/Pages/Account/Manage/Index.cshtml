@@ -40,7 +40,10 @@
                 <input asp-for="Input.PhoneNumber" class="form-control" />
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
-
+            <div class="form-group">
+                <label asp-for="Input.AccountCreatedDate"></label>
+                <span>@Model.Input.AccountCreatedDate</span>
+            </div>
             <button type="submit" class="btn btn-default">Save</button>
         </form>
     </div>

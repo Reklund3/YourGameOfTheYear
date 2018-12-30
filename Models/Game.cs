@@ -14,7 +14,8 @@ namespace YourGameOfTheYear.Models
         public string GameName { get; set; }
         [Display(Name = "Description")]
         public string GameDescription { get; set; }
-        public List<Genre> Genre { get; set; }
+        public int GenreId { get; set; }
+        public Genre Genre { get; set; }
         [Display(Name = "Game Studio")]
         public string Studio { get; set; }
         [Display(Name = "Activity")]

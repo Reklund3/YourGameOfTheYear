@@ -52,6 +52,8 @@ namespace YourGameOfTheYear.Areas.Identity.Pages.Account.Manage
             public string NickName { get; set; }
             [Display(Name = "Reviews Left: ")]
             public int ReviewCount { get; set; }
+            [Display(Name = "Account Created On: ")]
+            public DateTime AccountCreatedDate { get; set; }
         }
 
         public async Task<IActionResult> OnGetAsync()

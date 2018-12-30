@@ -45,7 +45,8 @@ namespace YourGameOfTheYear.Migrations
                     AccessFailedCount = table.Column<int>(nullable: false),
                     NickName = table.Column<string>(nullable: true),
                     SubmittedReviewCount = table.Column<int>(nullable: false),
-                    CommentsCount = table.Column<int>(nullable: false)
+                    CommentsCount = table.Column<int>(nullable: false),
+                    AccountCreatedDate = table.Column<DateTime>(nullable: false, defaultValueSql: "getutcdate()")
                 },
                 constraints: table =>
                 {
@@ -76,6 +77,7 @@ namespace YourGameOfTheYear.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     GameName = table.Column<string>(nullable: true),
                     GameDescription = table.Column<string>(nullable: true),
+                    Genre = table.Column<int>(nullable: false),
                     Studio = table.Column<string>(nullable: true),
                     UserActivity = table.Column<int>(nullable: false),
                     GameRating = table.Column<double>(nullable: false),
@@ -84,6 +86,21 @@ namespace YourGameOfTheYear.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Games", x => x.ID)
+                        .Annotation("SqlServer:Clustered", true);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Genre",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    GenreName = table.Column<string>(nullable: true),
+                    GenreDescription = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Genre", x => x.ID)
                         .Annotation("SqlServer:Clustered", true);
                 });
 
@@ -194,28 +211,6 @@ namespace YourGameOfTheYear.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Genre",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    GenreName = table.Column<string>(nullable: true),
-                    GenreDescription = table.Column<string>(nullable: true),
-                    GameID = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Genre", x => x.ID)
-                        .Annotation("SqlServer:Clustered", true);
-                    table.ForeignKey(
-                        name: "FK_Genre_Games_GameID",
-                        column: x => x.GameID,
-                        principalTable: "Games",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "UserReviews",
                 columns: table => new
                 {
@@ -225,6 +220,8 @@ namespace YourGameOfTheYear.Migrations
                     UserReviewTitle = table.Column<string>(nullable: true),
                     UserDescription = table.Column<string>(nullable: true),
                     ReviewDate = table.Column<DateTime>(nullable: false),
+                    UserId = table.Column<int>(nullable: false),
+                    UserNickName = table.Column<string>(nullable: true),
                     GameId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -299,11 +296,6 @@ namespace YourGameOfTheYear.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Genre_GameID",
-                table: "Genre",
-                column: "GameID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Message_UserReviewID",

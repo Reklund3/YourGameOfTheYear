@@ -26,12 +26,18 @@ namespace YourGameOfTheYear.Data
             
             // Game
             modelBuilder.Entity<Game>().HasKey(x => x.ID).ForSqlServerIsClustered();
-
+            modelBuilder.Entity<Game>().HasOne(x => x.Genre).WithMany(x => x.Games).HasForeignKey(x => x.GenreId);
             // Genre
             modelBuilder.Entity<Genre>().HasKey(x => x.ID).ForSqlServerIsClustered();
-
+            //modelBuilder.Entity<Genre>().HasOne(x => x.GameId).WithMany(x =>)
             // UserReview
             modelBuilder.Entity<UserReview>().HasKey(x => x.ID).ForSqlServerIsClustered();
+
+            // UserInfo
+            modelBuilder.Entity<UserInfo>()
+                .Property(x => x.AccountCreatedDate)
+                .HasDefaultValueSql("GETDATE()")
+                .ValueGeneratedOnAdd();
         }
         
         public DbSet<Consoles> Consoles { get; set; }

@@ -10,7 +10,7 @@ using YourGameOfTheYear.Data;
 namespace YourGameOfTheYear.Migrations
 {
     [DbContext(typeof(YourGameOfTheYearContext))]
-    [Migration("20181228033553_Initial Migration")]
+    [Migration("20181230185627_Initial Migration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -161,6 +161,8 @@ namespace YourGameOfTheYear.Migrations
 
                     b.Property<DateTime>("GameReleaseDate");
 
+                    b.Property<int>("Genre");
+
                     b.Property<string>("Studio");
 
                     b.Property<int>("UserActivity");
@@ -177,16 +179,12 @@ namespace YourGameOfTheYear.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("GameID");
-
                     b.Property<string>("GenreDescription");
 
                     b.Property<string>("GenreName");
 
                     b.HasKey("ID")
                         .HasAnnotation("SqlServer:Clustered", true);
-
-                    b.HasIndex("GameID");
 
                     b.ToTable("Genre");
                 });
@@ -219,6 +217,10 @@ namespace YourGameOfTheYear.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("AccessFailedCount");
+
+                    b.Property<DateTime>("AccountCreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("getutcdate()");
 
                     b.Property<int>("CommentsCount");
 
@@ -282,6 +284,10 @@ namespace YourGameOfTheYear.Migrations
 
                     b.Property<string>("UserDescription");
 
+                    b.Property<int>("UserId");
+
+                    b.Property<string>("UserNickName");
+
                     b.Property<double>("UserRating");
 
                     b.Property<string>("UserReviewTitle");
@@ -337,13 +343,6 @@ namespace YourGameOfTheYear.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("YourGameOfTheYear.Models.Genre", b =>
-                {
-                    b.HasOne("YourGameOfTheYear.Models.Game")
-                        .WithMany("Genre")
-                        .HasForeignKey("GameID");
                 });
 
             modelBuilder.Entity("YourGameOfTheYear.Models.Message", b =>
