@@ -101,7 +101,6 @@ namespace YourGameOfTheYear.Controllers
             {
                 try
                 {
-                    
                     _context.Update(game);
                     await _context.SaveChangesAsync();
                 }
