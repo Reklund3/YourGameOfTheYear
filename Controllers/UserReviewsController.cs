@@ -67,7 +67,7 @@ namespace YourGameOfTheYear.Controllers
 
             if (ModelState.IsValid)
             {
-                userReview.ReviewDate = DateTime.UtcNow;
+                userReview.ReviewDate = DateTime.Now;
                 var id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 //userReview.UserNickName = _context.UsersInfo.FirstOrDefault(x => x.Id == id).NickName;
                 _context.Add(userReview);

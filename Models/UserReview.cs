@@ -17,6 +17,7 @@ namespace YourGameOfTheYear.Models
         public DateTime ReviewDate { get; set; }
         public List<Message> Messages { get; set; }
         public int UserId { get; set; }
+        public UserInfo UserInfo { get; set; }
         public string UserNickName { get; set; }
         public int GameId { get; set; }
     }

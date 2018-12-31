@@ -36,6 +36,7 @@ namespace YourGameOfTheYear.Controllers
             }
 
             var game = await _context.Games
+                .Include(x => x.Genre)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (game == null)
             {
@@ -89,7 +90,7 @@ namespace YourGameOfTheYear.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,GameName,GameDescription,Studio,GameRating,GameReleaseDate")] Game game)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,GameName,GameDescription,Studio,GameRating,GenreId,GameReleaseDate")] Game game)
         {
             if (id != game.ID)
             {

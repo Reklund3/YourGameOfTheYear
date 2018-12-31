@@ -1,11 +1,10 @@
 ﻿@model YourGameOfTheYear.Models.Game
-
+@inject YourGameOfTheYear.Data.YourGameOfTheYearContext context
 @{
+    var Genres = context.Genre.Select(x => new SelectListItem(x.GenreName, x.ID.ToString()));
     ViewData["Title"] = "Edit";
 }
-
 <h2>Edit</h2>
-
 <h4>Game</h4>
 <hr />
 <div class="row">
@@ -29,9 +28,9 @@
                 <span asp-validation-for="Studio" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="GameRating" class="control-label"></label>
-                <input asp-for="GameRating" class="form-control" />
-                <span asp-validation-for="GameRating" class="text-danger"></span>
+                <label asp-for="Genre" class="control-label"></label>
+                <select asp-for="GenreId" asp-items="@Genres" class="form-control"></select>
+                <span asp-validation-for="GenreId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="GameReleaseDate" class="control-label"></label>
@@ -44,11 +43,9 @@
         </form>
     </div>
 </div>
-
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
