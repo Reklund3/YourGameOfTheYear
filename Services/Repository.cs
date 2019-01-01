@@ -19,10 +19,6 @@ namespace YourGameOfTheYear.Services
         {
             this._context = context;
         }
-        public List<Game> GetRecommendedGames(int UserId)
-        {
-            return GamesForUser(UserId);
-        }
         public void UpdateTrending()
         {
             foreach (Game game in Games)
@@ -40,9 +36,20 @@ namespace YourGameOfTheYear.Services
 
             }
         }
+        public List<Game> GetRecommendedGames(int UserId)
+        {
+            List<Game> GameListForUser = GamesForUser(UserId);
+            List<UserReview> userReviews = UsersReviews(UserId);
+            
+            return GameListForUser;
+        }
+        private List<UserReview> UsersReviews(int UserId)
+        {
+            return UserReviews.Where(x => x.UserId == UserId).ToList();
+        }
         private List<Game> GamesForUser(int UserId)
         {
-            List<UserReview> usersReviews = UserReviews.Where(x => x.UserId == UserId).ToList();
+            List<UserReview> usersReviews = UsersReviews(UserId);
             List<Game> RecommendedGames = Games;
             foreach (UserReview UR in usersReviews)
             {

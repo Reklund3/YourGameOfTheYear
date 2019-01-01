@@ -10,6 +10,8 @@ namespace YourGameOfTheYear.Models
 {
     public class UserInfo : IdentityUser<int>
     {
+        [Key]
+        public int ID { get; }
         public string NickName { get; set; }
         public int SubmittedReviewCount { get; set; }
         public int CommentsCount { get; set; }
