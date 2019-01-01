@@ -69,6 +69,7 @@ namespace YourGameOfTheYear.Controllers
             {
                 userReview.ReviewDate = DateTime.Now;
                 var id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                userReview.UserId = _context.Users.FirstOrDefault(x => x.Email == User.Identity.Name).Id;
                 //userReview.UserNickName = _context.UsersInfo.FirstOrDefault(x => x.Id == id).NickName;
                 _context.Add(userReview);
                 await _context.SaveChangesAsync();

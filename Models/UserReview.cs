@@ -20,5 +20,6 @@ namespace YourGameOfTheYear.Models
         public UserInfo UserInfo { get; set; }
         public string UserNickName { get; set; }
         public int GameId { get; set; }
+        public Game Game { get; set; }
     }
 }

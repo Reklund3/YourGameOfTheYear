@@ -9,5 +9,6 @@ namespace YourGameOfTheYear.Services
         List<Game> Games { get; }
         List<UserReview> UserReviews { get; }
         void UpdateTrending();
+        List<Game> GetRecommendedGames(int UserId);
     }
 }

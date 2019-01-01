@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using YourGameOfTheYear.Models;
+using Microsoft.AspNetCore.Identity;
+using YourGameOfTheYear.Data;
 
 namespace YourGameOfTheYear.Controllers
 {

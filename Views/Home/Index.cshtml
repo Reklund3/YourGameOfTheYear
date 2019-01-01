@@ -36,7 +36,14 @@
 </div>
 
 <div class="row" style="margin-top:20px;">
-    @await Component.InvokeAsync("TopTen")
-    @await Component.InvokeAsync("TopTrending")
-    @await Component.InvokeAsync("TopTenRecommended")
+    @if (User.Identity.Name != null)
+    {
+        @await Component.InvokeAsync("TopTenRecommended")
+        @await Component.InvokeAsync("TopTrending")
+    }
+    else
+    {
+        @await Component.InvokeAsync("TopTen")
+        @await Component.InvokeAsync("TopTrending")
+    }
 </div>

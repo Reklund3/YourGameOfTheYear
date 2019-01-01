@@ -5,6 +5,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using YourGameOfTheYear.Data;
 using YourGameOfTheYear.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace YourGameOfTheYear.Services
 {
@@ -16,6 +18,10 @@ namespace YourGameOfTheYear.Services
         public Repository(YourGameOfTheYearContext context)
         {
             this._context = context;
+        }
+        public List<Game> GetRecommendedGames(int UserId)
+        {
+            return GamesForUser(UserId);
         }
         public void UpdateTrending()
         {
@@ -33,6 +39,16 @@ namespace YourGameOfTheYear.Services
                 Console.WriteLine(game.UserActivity);
 
             }
+        }
+        private List<Game> GamesForUser(int UserId)
+        {
+            List<UserReview> usersReviews = UserReviews.Where(x => x.UserId == UserId).ToList();
+            List<Game> RecommendedGames = Games;
+            foreach (UserReview UR in usersReviews)
+            {
+                RecommendedGames.Remove(RecommendedGames.FirstOrDefault(x => x.ID == UR.GameId));
+            }
+            return RecommendedGames;
         }
         public void Add(Game game)
         {
