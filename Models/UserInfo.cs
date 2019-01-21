@@ -15,6 +15,7 @@ namespace YourGameOfTheYear.Models
         public string NickName { get; set; }
         public int SubmittedReviewCount { get; set; }
         public int CommentsCount { get; set; }
+        
         public DateTime AccountCreatedDate { get; set; }
     }
 }

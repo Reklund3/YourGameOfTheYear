@@ -73,7 +73,8 @@ namespace YourGameOfTheYear.Areas.Identity.Pages.Account.Manage
                 Email = email,
                 PhoneNumber = phoneNumber,
                 NickName = user.NickName,
-                ReviewCount = user.SubmittedReviewCount
+                ReviewCount = user.SubmittedReviewCount,
+                AccountCreatedDate = user.AccountCreatedDate
             };
 
             IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);

@@ -36,8 +36,7 @@ namespace YourGameOfTheYear.Data
             modelBuilder.Entity<UserReview>().HasOne(x => x.Game).WithMany(x => x.UserReviews).HasForeignKey(x => x.GameId);
             //modelBuilder.Entity<UserReview>().HasOne(x => x.UserInfo).WithOne(x => x.Id).HasForeignKey(x => x.UserId);
             // UserInfo
-            modelBuilder.Entity<UserInfo>()
-                .Property(x => x.AccountCreatedDate)
+            modelBuilder.Entity<UserInfo>().Property(x => x.AccountCreatedDate)
                 .HasDefaultValueSql("GETDATE()")
                 .ValueGeneratedOnAdd();
         }
