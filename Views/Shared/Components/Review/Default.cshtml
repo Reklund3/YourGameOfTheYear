@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<UserReview>
-
+@inject YourGameOfTheYear.Data.YourGameOfTheYearContext context
+@{ 
+    var UserNickNames = context.UsersInfo;
+}
 <div>
     <table class="table table-condensed" style="margin-top:20px">
         <tr>
@@ -23,7 +26,11 @@
                 @item.UserRating
             </td>
             <td>
-                
+                @if(UserNickNames.FirstOrDefault(x => x.Id == item.UserId).NickName == null)
+                {
+                    @UserNickNames.FirstOrDefault(x => x.Id == item.UserId).UserName
+                }
+                @UserNickNames.FirstOrDefault(x => x.Id == item.UserId).NickName
             </td>
             <td>
                 @item.ReviewDate

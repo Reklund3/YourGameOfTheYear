@@ -17,7 +17,6 @@ namespace YourGameOfTheYear.ViewComponents
         }
         public IViewComponentResult Invoke(int id)
         {
-            
             return View(_context.UserReviews.Where(x => x.GameId == id));
         }
     }
