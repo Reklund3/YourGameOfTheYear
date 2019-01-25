@@ -1,5 +1,8 @@
 ﻿@model YourGameOfTheYear.Models.Game
+@inject YourGameOfTheYear.Data.YourGameOfTheYearContext Context
 @{
+    int num = Context.UsersInfo.FirstOrDefault(x => x.UserName == User.Identity.Name).Id;
+    var reviews = Context.UserReviews.Where(x => x.UserId == num).ToList();
     ViewData["Title"] = "Details";
 }
 <h2>@Html.DisplayFor(model => model.GameName)</h2>
@@ -37,6 +40,8 @@
             @Html.DisplayFor(model => model.GameReleaseDate)
         </dd>
     </dl>
+    @if (reviews.FirstOrDefault(x => x.GameId == Model.ID) == null)
+    {
     <div class="row">
         <div class="col-md-12">
             <form asp-action="Create" asp-controller="UserReviews">
@@ -67,5 +72,6 @@
             </form>
         </div>
     </div>
+    }
 </div>
 @await Component.InvokeAsync("Review",Model.ID)
