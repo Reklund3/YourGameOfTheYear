@@ -1,10 +1,13 @@
 ﻿@model YourGameOfTheYear.Models.Game
-@inject YourGameOfTheYear.Data.YourGameOfTheYearContext Context
+@inject YourGameOfTheYear.Data.YourGameOfTheYearContext context
 @{
-    int num = Context.UsersInfo.FirstOrDefault(x => x.UserName == User.Identity.Name).Id;
-    var reviews = Context.UserReviews.Where(x => x.UserId == num).ToList();
+    int num = context.UsersInfo.FirstOrDefault(x => x.UserName == User.Identity.Name).Id;
+    var reviews = context.UserReviews.Where(x => x.UserId == num).ToList();
     ViewData["Title"] = "Details";
 }
+<script language="C#" runat="server">
+    
+</script>
 <h2>@Html.DisplayFor(model => model.GameName)</h2>
 <div>
     <hr />
@@ -53,10 +56,34 @@
                         <input name="UserReviewTitle" class="form-control" />
                         @Html.ValidationMessageFor(x => x.UserReviews[0].UserReviewTitle)
                     </div>
-                    <div class="col-md-5 col-md-offset-2">
-                        <label name="@nameof(UserReview.UserRating)" class="control-label">Rating</label>
-                        <input name="UserRating" class="form-control" />
-                        @Html.ValidationMessageFor(x => x.UserReviews[0].UserRating)
+                    <div class="col-md-3">
+                        <h3 style="text-align:center">Rating</h3>
+                        <table class="table table-condensed" style="margin-top:20px; text-align:center">
+                            <tr>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="radio" id="r1" GroupName="RatingGroup" />
+                                </td>
+                                <td>
+                                    <input type="radio" id="r2" GroupName="RatingGroup" />
+                                </td>
+                                <td>
+                                    <input type="radio" id="r3" GroupName="RatingGroup" />
+                                </td>
+                                <td>
+                                    <input type="radio" id="r4" GroupName="RatingGroup" />
+                                </td>
+                                <td>
+                                    <input type="radio" id="r5" GroupName="RatingGroup" />
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
                 <div class="row">
