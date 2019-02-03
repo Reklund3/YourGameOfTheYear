@@ -62,15 +62,15 @@ namespace YourGameOfTheYear.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,UserRating,UserReviewTitle,UserDescription,ReviewDate,GameId")] UserReview userReview)
+        public async Task<IActionResult> Create([Bind("ID,UserRating,UserReviewTitle,UserDescription,ReviewDate,GameId,rating")] UserReview userReview)
         {
 
             if (ModelState.IsValid)
             {
+                
                 userReview.ReviewDate = DateTime.Now;
                 var id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 userReview.UserId = _context.Users.FirstOrDefault(x => x.Email == User.Identity.Name).Id;
-                //userReview.UserNickName = _context.UsersInfo.FirstOrDefault(x => x.Id == id).NickName;
                 _context.Add(userReview);
                 await _context.SaveChangesAsync();
                 Game game = _context.Games.FirstOrDefault(x => x.ID == userReview.GameId);

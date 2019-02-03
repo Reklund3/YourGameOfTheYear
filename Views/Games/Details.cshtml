@@ -51,39 +51,29 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="ID" name="GameId" />
                 <div class="form-group row">
-                    <div class="col-md-5">
-                        <label name="@nameof(UserReview.UserReviewTitle)" class="control-label">Title</label>
+                    <div class="col-md-5 col-md-offset-1 text-center">
+                        <h3><label name="@nameof(UserReview.UserReviewTitle)" class="control-label">Title</label></h3>
                         <input name="UserReviewTitle" class="form-control" />
                         @Html.ValidationMessageFor(x => x.UserReviews[0].UserReviewTitle)
                     </div>
-                    <div class="col-md-3">
-                        <h3 style="text-align:center">Rating</h3>
-                        <table class="table table-condensed" style="margin-top:20px; text-align:center">
+                    <div class="col-md-3 col-md-offset-2">
+                        <h3 class="text-center">Rating</h3>
+                        <table class="table table-condensed text-center">
                             <tr>
-                                <th>1</th>
-                                <th>2</th>
-                                <th>3</th>
-                                <th>4</th>
-                                <th>5</th>
+                                @foreach(var rating in UserReview.Ratings)
+                                {
+                                    <th>@rating.ToString()</th>
+                                }
                             </tr>
                             <tr>
-                                <td>
-                                    <input type="radio" id="r1" GroupName="RatingGroup" />
-                                </td>
-                                <td>
-                                    <input type="radio" id="r2" GroupName="RatingGroup" />
-                                </td>
-                                <td>
-                                    <input type="radio" id="r3" GroupName="RatingGroup" />
-                                </td>
-                                <td>
-                                    <input type="radio" id="r4" GroupName="RatingGroup" />
-                                </td>
-                                <td>
-                                    <input type="radio" id="r5" GroupName="RatingGroup" />
-                                </td>
+                                @foreach (var rating in UserReview.Ratings)
+                                {
+                                    <td>@Html.RadioButtonFor(x => x.UserReviews[0].UserRating, rating, rating)</td>
+                                }
                             </tr>
+
                         </table>
+                        
                     </div>
                 </div>
                 <div class="row">

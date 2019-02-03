@@ -11,8 +11,8 @@ namespace YourGameOfTheYear.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         [Display(Name = "Rating")]
-        public double UserRating { get; set; }
-        
+        public int UserRating { get; set; }
+        public static int[] Ratings = { 1, 2, 3, 4, 5 };
         public string UserReviewTitle { get; set; }
         public string UserDescription { get; set; }
         public DateTime ReviewDate { get; set; }

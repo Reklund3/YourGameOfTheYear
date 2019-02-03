@@ -3,21 +3,24 @@
 <div class="col-md-3 col-md-offset-2">
     <h2 class="text-center">Trending</h2>
     <table class="table table-condensed">
-        <tr>
-            <th>Game</th>
-            <th>Activity</th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+        <thead>
             <tr>
-                <td>
-                    @item.GameName
-                </td>
-                <td>
-                    @item.UserActivity
-                </td>
+                <th>Game</th>
+                <th>Activity</th>
             </tr>
-        }
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.GameName
+                    </td>
+                    <td>
+                        @item.UserActivity
+                    </td>
+                </tr>
+            }
+        </tbody>
     </table>
 </div>
