@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using YourGameOfTheYear.Models;
 
 namespace YourGameOfTheYear.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class GenresController : Controller
     {
         private readonly YourGameOfTheYearContext _context;
@@ -18,14 +20,16 @@ namespace YourGameOfTheYear.Controllers
         {
             _context = context;
         }
-
+        
         // GET: Genres
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Genre.ToListAsync());
         }
 
         // GET: Genres/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)

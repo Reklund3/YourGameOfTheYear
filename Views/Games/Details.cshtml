@@ -1,8 +1,12 @@
 ﻿@model YourGameOfTheYear.Models.Game
 @inject YourGameOfTheYear.Data.YourGameOfTheYearContext context
 @{
-    int num = context.UsersInfo.FirstOrDefault(x => x.UserName == User.Identity.Name).Id;
-    var reviews = context.UserReviews.Where(x => x.UserId == num).ToList();
+    var reviews = context.UserReviews.ToList();
+    if (User.Identity.IsAuthenticated == true)
+    {
+        int num = context.UsersInfo.FirstOrDefault(x => x.UserName == User.Identity.Name).Id;
+        reviews = context.UserReviews.Where(x => x.UserId == num).ToList();
+    }
     ViewData["Title"] = "Details";
 }
 <script language="C#" runat="server">
@@ -43,7 +47,8 @@
             @Html.DisplayFor(model => model.GameReleaseDate)
         </dd>
     </dl>
-    @if (reviews.FirstOrDefault(x => x.GameId == Model.ID) == null)
+
+    @if (reviews.FirstOrDefault(x => x.GameId == Model.ID) == null && User.Identity.IsAuthenticated == true)
     {
     <div class="row">
         <div class="col-md-12">

@@ -42,14 +42,17 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.ConsoleReleaseDate)
                     </td>
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <span> | </span><a asp-action="Edit" asp-route-id="@item.ID">Edit</a> <span> | </span>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
                             <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                        </td>
-                    }
+                        }
+                    </td>
                 </tr>
             }
         </tbody>

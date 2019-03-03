@@ -26,7 +26,7 @@ namespace YourGameOfTheYear.Controllers
         {
             return View(await _context.Games.Include(x => x.Genre).ToListAsync());
         }
-
+        [AllowAnonymous]
         // GET: Games/Details/5
         public async Task<IActionResult> Details(int? id)
         {

@@ -61,14 +61,17 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.GameReleaseDate)
                 </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a>
                 @if (User.IsInRole("Admin"))
                 {
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                    </td>
+                    <span> | </span><a asp-action="Edit" asp-route-id="@item.ID">Edit</a> <span> | </span>
                 }
+                @if (User.IsInRole("Admin"))
+                {                        
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                }
+                </td>
             </tr>
         }
     </tbody>
